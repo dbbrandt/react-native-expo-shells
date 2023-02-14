@@ -9,6 +9,9 @@ import {StatusBar} from 'expo-status-bar';
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import { Provider } from 'react-redux';
+import { store } from "./store/store";
+
 import {StyleSheet, Text, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import Colors from "./constants/colors";
@@ -20,7 +23,7 @@ const BottomTab = createBottomTabNavigator();
 
 export default function App() {
     return (
-        <>
+        <Provider store={store}>
             <StatusBar style="light"/>
             <NavigationContainer>
                 <BottomTab.Navigator screenOptions={{
@@ -38,7 +41,7 @@ export default function App() {
                     }}/>
                 </BottomTab.Navigator>
             </NavigationContainer>
-        </>
+        </Provider>
     )
 }
 const styles = StyleSheet.create({
