@@ -11,6 +11,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import {StyleSheet, Text, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
+import Colors from "./constants/colors";
 
 import WelcomeScreen from "./screens/WelcomeScreen";
 import UserScreen from "./screens/UserScreen";
@@ -23,9 +24,9 @@ export default function App() {
             <StatusBar style="light"/>
             <NavigationContainer>
                 <BottomTab.Navigator screenOptions={{
-                    headerStyle: {backgroundColor: '#48b4e7'},
-                    headerTintColor: 'white',
-                    tabBarActiveTintColor: '#48b4e7',
+                    headerStyle: {backgroundColor: Colors.tabsMain},
+                    headerTintColor: Colors.tabsText,
+                    tabBarActiveTintColor: Colors.tabsMain,
                 }}>
                     <BottomTab.Screen name="Welcome" component={WelcomeScreen} options={{
                         tabBarIcon: ({color, size}) =>
