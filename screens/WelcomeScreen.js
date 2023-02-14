@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
+import Colors from "../constants/colors";
 
 function WelcomeScreen() {
   return (
@@ -20,6 +21,6 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: 'bold',
-    color: '#eb1064',
+    color: Colors.textHighlight,
   },
 });

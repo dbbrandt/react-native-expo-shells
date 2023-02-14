@@ -1,4 +1,6 @@
 import { View, Text, Button, StyleSheet } from 'react-native';
+import Colors from "../constants/colors";
+import IconButton from "../components/iconButton";
 
 function UserScreen({ navigation }) {
   function gotoHomeHandler() {
@@ -10,7 +12,7 @@ function UserScreen({ navigation }) {
       <Text>
         This is the <Text style={styles.highlight}>"User"</Text> screen!
       </Text>
-      <Button title="Home" onPress={gotoHomeHandler}/>
+      <IconButton icon='home' size={100} color={Colors.tabsMain} onPress={gotoHomeHandler}/>
     </View>
   );
 }
@@ -25,6 +27,6 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: 'bold',
-    color: '#eb1064',
+    color: Colors.textHighlight,
   },
 });
