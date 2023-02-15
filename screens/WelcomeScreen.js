@@ -4,12 +4,11 @@ import {useSelector} from "react-redux";
 
 function WelcomeScreen() {
     const someData = useSelector((state) => state.appdata.someData);
-    const dateArray = someData.map((item) => `${item.dateAdded} (id - ${item.id})`);
 
     function dateList(item, index) {
         return (
             <View style={styles.listContainer}>
-                <Text style={{marginBottom: 10}}>{index+1}. {item}</Text>
+                <Text style={{marginBottom: 10}}>{index+1}. {item.dateAdded} ({item.id})</Text>
             </View>
         )
     }
@@ -28,8 +27,8 @@ function WelcomeScreen() {
                 </Text>
             </View>
             <View style={styles.listContainer}>
-                <FlatList data={dateArray}
-                          keyExtractor={(item) => item.id}
+                <FlatList data={someData}
+                          keyExtractor={(item) => item.id }
                           renderItem={({item, index}) => dateList(item, index)}
                 />
             </View>
