@@ -6,7 +6,7 @@ import dataReReducer from './data';
 
 export const store = configureStore({
     reducer: {
-        favorites: dataReReducer
+        appdata: dataReReducer
     }
 });
 

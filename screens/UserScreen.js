@@ -2,8 +2,18 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import Colors from "../constants/colors";
 import IconButton from "../components/iconButton";
 
+import {useSelector, useDispatch} from 'react-redux';
+import { addSomeData} from "../store/data";
+
 function UserScreen({ navigation }) {
+  const someData = useSelector((state) => state.appdata.someData);
+  const dispatch = useDispatch();
+
   function gotoHomeHandler() {
+    const id = someData.length + 1;
+    const now = new Date();
+    // Storing a multi-value object in state
+    dispatch(addSomeData({id: id, dateAdded: now.toLocaleString()}));
     navigation.navigate('Welcome')
   }
 
