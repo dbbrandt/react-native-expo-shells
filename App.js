@@ -6,13 +6,13 @@ expo install react-native-safe-area-context react-native-screens
  */
 import {StatusBar} from 'expo-status-bar';
 
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Provider } from 'react-redux';
 import { store } from "./store/store";
 
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, ImageBackground} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import Colors from "./constants/colors";
 
@@ -20,12 +20,25 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import UserScreen from "./screens/UserScreen";
 
 const BottomTab = createBottomTabNavigator();
+//To use a background you need to make the default theme transparent
+const navTheme = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        background: 'transparent',
+    }
+}
 
 export default function App() {
     return (
         <Provider store={store}>
             <StatusBar style="light"/>
-            <NavigationContainer>
+            <ImageBackground source={require('./assets/images/background.png')}
+                             resizeMode="cover"
+                             style={styles.rootScreen}
+                             imageStyle={styles.backgroundImage}
+            >
+            <NavigationContainer theme={navTheme}>
                 <BottomTab.Navigator screenOptions={{
                     headerStyle: {backgroundColor: Colors.tabsMain},
                     headerTintColor: Colors.tabsText,
@@ -41,10 +54,18 @@ export default function App() {
                     }}/>
                 </BottomTab.Navigator>
             </NavigationContainer>
+            </ImageBackground>
         </Provider>
     )
 }
+
 const styles = StyleSheet.create({
+    rootScreen: {
+        flex: 1,
+    },
+    backgroundImage: {
+        opacity: 0.15,
+    },
     container: {
         flex: 1,
         backgroundColor: '#fff',
